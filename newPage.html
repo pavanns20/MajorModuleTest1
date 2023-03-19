@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style2.css">
+    
+    
+</head>
+<body>
+    <div class="container">
+    
+        <div id="game-result"></div>
+  <img src="images\victory-cup.png" id="victory-cup" alt="Victory Cup">
+  <button id="play-btn">Play Again</button>
+
+
+<div id="right-div" style="display: none;">
+			<button id="close-btn">x</button>
+			<h2>Game Rules</h2>
+			<ul class="rules">
+				<li>Rock beats scissors, scissors beat paper, and paper beats rock.</li>
+				<li>Agree ahead of time whether you’ll count off “rock, paper, scissors, shoot” or just “rock, paper, scissors.”</li>
+				<li>Use rock, paper, scissors to settle minor decisions or simply play to pass the time</li>
+				<li>If both players lay down the same hand, each player lays down another hand</li>
+			</ul>
+
+			
+
+		</div>
+  <button id="rules-btn">Rules</button>
+
+
+  </div>
+
+  <script>
+    const rulesDiv = document.getElementById('right-div');
+    const playBtn = document.getElementById('play-btn');
+    const rulesBtn = document.getElementById('rules-btn');
+    const closeBtn = document.getElementById('close-btn');
+    const victoryCup=document.getElementById('victory-cup');
+playBtn.addEventListener('click', () => {
+  history.back();
+});
+
+rulesBtn.addEventListener("click", () => {
+  rulesDiv.style.display = "block";
+});
+
+closeBtn.addEventListener("click", () => {
+  rulesDiv.style.display = "none";
+ });
+
+const gameResultDiv = document.getElementById('game-result');
+
+// Get game result from local storage
+const gameResult = localStorage.getItem('gameResult');
+
+// Display game result in the game-result div if user wins
+if (gameResult && gameResult.includes('HURRAY ! YOU WIN AGAINST PC')) {
+  gameResultDiv.textContent = gameResult;
+} else {
+  gameResultDiv.style.display = gameResult;
+}
+if(gameResult && gameResult.includes('YOU LOSE AGAINST PC.')){
+  victoryCup.style.display="none";
+  gameResultDiv.textContent='You Lost Against PC Better Luck Next Time!!';
+}
+if(gameResult&&gameResult.includes("It's a tie!")){
+   gameResultDiv.textContent='OH! Its a tie';
+
+}
+
+
+  </script>
+</body>
