@@ -36,7 +36,7 @@ playAgainBtn.addEventListener('click', () => {
 const nextBtn = document.getElementById('next-btn');
 nextBtn.addEventListener('click', () => {
   
-     window.location.href = '/newPage.html';
+     window.location.href = './newPage.html';
   
  
 });
